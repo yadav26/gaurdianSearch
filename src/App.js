@@ -19,6 +19,14 @@ var QUERY_STRING = "https://content.guardianapis.com/search?"; //""
 var API_KEY = "api-key=";
 
 class App extends Component {
+  resetAllButFavorites() {
+    this.state = {
+      items: [],
+      isLoaded: false,
+      searchString: ""
+    };
+  }
+
   resetState() {
     this.state = {
       items: [],
@@ -46,6 +54,9 @@ class App extends Component {
   }
 
   onSearchInputTextChange = event => {
+    //Bug fix - for unchecking the default checked checkboxes
+    this.resetAllButFavorites();
+
     if (event.target.value) {
       this.setState({ searchString: event.target.value });
     } else {

@@ -19,14 +19,17 @@ var QUERY_STRING = "https://content.guardianapis.com/search?"; //""
 var API_KEY = "api-key=";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+  resetState() {
     this.state = {
       items: [],
       favorites: [],
       isLoaded: false,
       searchString: ""
     };
+  }
+  constructor(props) {
+    super(props);
+    this.resetState();
   }
 
   componentDidMount() {
